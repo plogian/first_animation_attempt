@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="paper-full.js"></script>
+	<script type="text/paperscript" canvas="myCanvas">
+		var catPt1 =  new Point(50, 200);	
+		var catPt2 =  new Point(100, 100);
+		var catPt3 = new Point(150, 200);
+
+		var catPt3thru4 = new Point(200, 195);
+
+		var catPt4 =  new Point(250, 200);	
+		var catPt5 =  new Point(300, 100);
+		var catPt6 = new Point(350, 200);
+
+		var catPt7 = new Point(150, 500);
+		
+		var catPath = new Path();
+		catPath.add(catPt1, catPt2, catPt3);
+
+		var catPath2 = new Path();
+		catPath2.add(catPt4, catPt5, catPt6);
+	
+		var catPath3 = new Path.Arc(catPt3, catPt3thru4, catPt4);
+
+		var catPath4 = new Path.Arc(catPt6, catPt7, catPt1); 
+
+		var catComplete = new CompoundPath( {
+			children: [
+				catPath,
+				catPath2,
+				catPath3,
+				catPath4
+			],
+			strokeColor: "white",
+			fillColor: "white"
+		});
+
+		console.log(catComplete.area);
+
+		catComplete.scale(Math.random());
+
+		
+	</script>
+<link rel="stylesheet" type="text/css" href="randomCat.css">
+</head>
+<body>
+
+<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
